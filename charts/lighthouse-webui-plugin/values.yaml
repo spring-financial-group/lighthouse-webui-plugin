@@ -109,6 +109,23 @@ istio:
   apiVersion: networking.istio.io/v1beta1
   gateway: jx-gateway
 
+
+gatewayApi:
+  enabled: false
+  kind: HTTPRoute
+  labels: {}
+  annotations: {}
+  parentRef:
+    name: envoy-gateway
+    namespace:
+    sectionName:
+  hosts: []
+  rules: []
+  basicAuth:
+    enabled: false
+    kind: envoy
+    authData: ""
+
 # persistence for the events
 persistence:
   enabled: false
