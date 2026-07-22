@@ -25,7 +25,11 @@ func (i *JobInformer) Start(ctx context.Context) {
 		i.ResyncInterval,
 		lhinformers.WithNamespace(i.Namespace),
 	)
-	informerFactory.Lighthouse().V1alpha1().LighthouseJobs().Informer().AddEventHandler(i)
+	_, err := informerFactory.Lighthouse().V1alpha1().LighthouseJobs().Informer().AddEventHandler(i)
+	if err != nil && i.Logger != nil {
+		i.Logger.WithError(err).Error("failed to add the LighthouseJob event handler")
+		return
+	}
 	informerFactory.Start(ctx.Done())
 }
 
