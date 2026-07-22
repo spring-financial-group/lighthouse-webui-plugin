@@ -91,7 +91,9 @@ func NewStore(cfg StoreConfig, logger *logrus.Logger) (*Store, error) {
 		for {
 			select {
 			case <-ticker.C:
-				store.CollectGarbage()
+				if err := store.CollectGarbage(); err != nil {
+					logger.WithError(err).Warn("Store garbage collection failed")
+				}
 			case <-store.gcStopChan:
 				logger.Info("Store GarbageCollector exiting...")
 				return

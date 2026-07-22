@@ -3,8 +3,8 @@ package functions
 import (
 	"time"
 
-	"github.com/rickb777/date"
-	"github.com/rickb777/date/view"
+	"github.com/rickb777/date/v2"
+	"github.com/rickb777/date/v2/view"
 )
 
 func VDate(dateOrTime interface{}) view.VDate {

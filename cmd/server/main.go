@@ -125,8 +125,9 @@ func main() {
 		logger.WithError(err).Fatal("failed to initialize the HTTP handler")
 	}
 	httpServer := http.Server{
-		Handler: handler,
-		Addr:    options.listenAddr,
+		Handler:           handler,
+		Addr:              options.listenAddr,
+		ReadHeaderTimeout: 10 * time.Second,
 	}
 
 	var wg sync.WaitGroup
