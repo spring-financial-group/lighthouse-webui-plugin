@@ -62,7 +62,8 @@ spec:
     name: {{ include "webui.fullname" . }}
   basicAuth:
     users:
-      name: {{ include "webui.fullname" . }}-basic-auth
+      name: {{ .Values.gatewayApi.basicAuth.existingSecret | default (printf "%s-basic-auth" (include "webui.fullname" .)) }}
+{{- if not .Values.gatewayApi.basicAuth.existingSecret }}
 ---
 apiVersion: v1
 kind: Secret
@@ -73,6 +74,7 @@ metadata:
 type: Opaque
 data:
   .htpasswd: {{ .Values.gatewayApi.basicAuth.authData | quote }}
+{{- end }}
 {{- end }}
 
 {{- end -}}

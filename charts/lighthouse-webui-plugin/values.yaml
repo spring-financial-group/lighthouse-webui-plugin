@@ -125,6 +125,8 @@ gatewayApi:
     enabled: false
     kind: envoy
     authData: ""
+    # existing secret must contain a ".htpasswd" key
+    existingSecret: ""
 
 # persistence for the events
 persistence:
