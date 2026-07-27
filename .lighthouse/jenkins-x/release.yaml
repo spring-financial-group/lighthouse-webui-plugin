@@ -22,10 +22,13 @@ spec:
         - name: next-version
           resources:
             requests:
-              cpu: 400m
+              cpu: 100m
               memory: 600Mi
         - name: jx-variables
-          resources: {}
+          resources:
+            requests:
+              cpu: 400m
+              memory: 600Mi
         - name: release-binary
           resources: {}
         - name: build-and-push-image
