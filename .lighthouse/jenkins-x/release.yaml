@@ -20,15 +20,9 @@ spec:
           name: ""
           resources: {}
         - name: next-version
-          resources:
-            requests:
-              cpu: 100m
-              memory: 600Mi
+          resources: {}
         - name: jx-variables
-          resources:
-            requests:
-              cpu: 400m
-              memory: 600Mi
+          resources: {}
         - name: release-binary
           resources: {}
         - name: build-and-push-image
