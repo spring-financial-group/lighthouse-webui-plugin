@@ -1,3 +1,4 @@
+version: 2
 env:
   - GO111MODULE=on
   - CGO_ENABLED=0
@@ -41,7 +42,7 @@ archives:
   - name_template: "lighthouse-webui-plugin-{{ .Os }}-{{ .Arch }}"
     format_overrides:
       - goos: windows
-        format: zip
+        formats: [zip]
 
 checksum:
   # You can change the name of the checksums file.
@@ -55,7 +56,7 @@ checksum:
 
 changelog:
   # set it to true if you wish to skip the changelog generation
-  skip: true
+  disable: true
 
 release:
   # If set to true, will not auto-publish the release.
